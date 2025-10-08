@@ -15,8 +15,8 @@ pipeline{
         stage('push Docker image to docker hub'){
             steps{
                 echo "push Docker image to docker hub"
-                bat 'docker tag kuberdemoapp:v1 shivaji108/sample:kuberimg'
-                bat 'docker push shivaji108/sample:kuberimg'
+                bat 'docker tag kuberdemoapp:v1 shivaji108/sample:kuberimg1'
+                bat 'docker push shivaji108/sample:kuberimg1'
             }
         }
         stage('Deploy to Kubernetes'){
