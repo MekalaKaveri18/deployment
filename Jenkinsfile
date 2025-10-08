@@ -4,7 +4,7 @@ pipeline{
         stage('Build Docker Image'){
             steps{
                 echo "Build Docker Image"
-                bat "docker build -t kuberdemoapp:v1 ."
+                bat "docker build -t kubedemoapp:v1 ."
             }
         }
         stage('Docker Login'){
@@ -15,7 +15,7 @@ pipeline{
         stage('push Docker image to docker hub'){
             steps{
                 echo "push Docker image to docker hub"
-                bat 'docker tag kuberdemoapp:v1 shivaji108/sample:kuberimg1'
+                bat 'docker tag kubedemoapp:v1 shivaji108/sample:kuberimg1'
                 bat 'docker push shivaji108/sample:kuberimg1'
             }
         }
