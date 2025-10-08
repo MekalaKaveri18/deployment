@@ -1,33 +1,29 @@
-pipeline{
+pipeline{ 
     agent any
-    stages
-    {
+    stages{
         stage('Build Docker Image'){
             steps{
-                echo "Build docker image"
-                bat "docker build -t kubedemoapp:latest"
+                echo "Build Docker Image"
+                bat "docker build -t kuberdemoapp:v1 ."
             }
         }
-        stage("Docker Login"){
+        stage('Docker Login'){
             steps{
-                bat 'docker login -u shivaji108 -p Kaveri@1729 '
+                bat 'docker login -u shivaji108 -p Kaveri@1729.'
             }
         }
-        stage('push Docker Image to Docker Hub'){
+        stage('push Docker image to docker hub'){
             steps{
-                echo "push Docker Image to Docker Hub"
-                bat "docker tag kubedemoapp:latest shivaji108/sample:latest"
-
-                bat "docker push shivaji108/sample:kubeimage1"
+                echo "push Docker image to docker hub"
+                bat 'docker tag kuberdemoapp:v1 shivaji108/sample:kuberimg'
+                bat 'docker push rohinigarlapati/sample:kuberimg'
             }
         }
-        stage('Deploy to kubernetes'){
-            //apply deployment and service
+        stage('Deploy to Kubernetes'){
             steps{
-            bat 'kubectl apply -f deployment.yaml --validate=false'
-            bat 'kubectl apply -f service.yaml'
+                bat 'kubectl apply -f deployment.yaml --validate=false'
+                bat 'kubectl apply -f service.yaml'
+            }
         }
-        }
-
     }
 }
