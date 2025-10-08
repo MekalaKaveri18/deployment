@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubedemoapp-deployment
+  name: kuberdemoapp-deployment
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: kubedemoapp
+      app: kuberdemoapp
   template:
     metadata:
       labels:
-        app: kubedemoapp
+        app: kuberdemoapp
     spec:
       containers:
-      - name: kubedemoapp
+      - name: kuberdemoapp
         image: shivaji108/sample:kuberimg1
 
         ports:
