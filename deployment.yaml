@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: kubedemoapp
-        image: shivaji108/sample:kuberimg1
+        image: shivaji108/sample:kuberimg
 
         ports:
 
