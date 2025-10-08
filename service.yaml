@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kuberdemoapp-service
+  name: kubedemoapp-service
 spec: 
   selector:
-    app: kuberdemoapp
+    app: kubedemoapp
   ports:
     - protocol: TCP
       port: 5000
