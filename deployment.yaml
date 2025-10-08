@@ -14,6 +14,6 @@ spec:
       spec:
         containers:
           - name: kuberdemoapp
-            image: shivaji/sample:kuberimg
+            image: shivaji108/sample:kuberimg
             ports:
               - containerPort: 5000
