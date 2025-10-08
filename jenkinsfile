@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    stages
+    {
+        stage('Build Docker Image'){
+            steps{
+                echo "Build docker image"
+                bat "docker build -t kubdemoapp:v1"
+            }
+        }
+        stage("Docker Login"){
+            steps{
+                bat 'docker login -u srilaxmi_dev -p srilaxmi@123 '
+            }
+        }
+        stage('push Docker Image to Docker Hub'){
+            steps{
+                echo "push Docker Image to Docker Hub"
+                bat "docker tag kubdemoapp:v1 srilaxmi_dev/sample:kubeimage"
+
+                bat "docker push srilaxmi_dev/sample:kubeimage1"
+            }
+        }
+        stage('Deploy to kubernetes'){
+            //apply deployment and service
+            bat 'kubectl apply -f deployment.yaml --validate=false'
+            bat 'kubectl apply -f service.yaml'
+        }
+
+
+    }
+}
